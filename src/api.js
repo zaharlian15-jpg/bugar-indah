@@ -6,7 +6,7 @@ const TIMEOUT_MS = 8000;
 // Login hashes the password server-side and may hit an Apps Script cold start.
 const LOGIN_TIMEOUT_MS = 30000;
 const ADMIN_TOKEN_KEY = 'trevel_admin_token';
-const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxvZRBmV0rLiFGcyjy66RINlv1SFoymkSUlSNW1dcLuJj-wq7ULm5OWA6k2fhvwNgG4/exec';
+const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzA3xHoiJxu9vHlR2hfOxz8HbqefHLaHK1gCvwEZFPg0bkEqVsaOSKktGF_lV3DQfqX/exec';
 
 // Error kinds let the UI tell a slow backend, a blocked request and bad credentials apart.
 export const API_ERROR = {
