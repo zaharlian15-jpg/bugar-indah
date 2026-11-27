@@ -204,7 +204,7 @@ export default function SettingsManager() {
                   required
                   value={form.name}
                   onChange={(e) => handleChange('name', e.target.value)}
-                  placeholder="Contoh: PO Bus Pariwisata Bugar Indah Sejahtera"
+                  placeholder="Contoh: PO Bus Pariwisata Bugar Indah"
                   className="w-full px-4 py-2.5 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-cobalt focus:border-cobalt"
                 />
               </div>
@@ -297,7 +297,7 @@ export default function SettingsManager() {
                   type="text"
                   value={form.bankHolder}
                   onChange={(e) => handleChange('bankHolder', e.target.value)}
-                  placeholder="Contoh: PO Bugar Indah Sejahtera"
+                  placeholder="Contoh: PO Bugar Indah"
                   className="w-full px-3 py-2.5 rounded-xl border border-slate-300 font-semibold focus:outline-none focus:ring-2 focus:ring-cobalt"
                 />
               </div>

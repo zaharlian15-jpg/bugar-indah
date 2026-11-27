@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react';
 
 export const DEFAULT_SETTINGS = {
-  name: 'PO Bus Pariwisata Bugar Indah Sejahtera',
+  name: 'PO Bus Pariwisata Bugar Indah',
   address: 'CMX2+7M8, Manding, Purwosari, Kec. Wonoasri, Kabupaten Madiun, Jawa Timur 63157',
-  mapUrl: 'https://www.google.com/maps/place/PO+BUS+PARIWISATA+BUGAR+INDAH+SEJAHTERA/@-7.5518315,111.6517124,17z/data=!3m1!4b1!4m6!3m5!1s0x2e79c7ef2c359b27:0x5d0e2ff1e2aa53e8!8m2!3d-7.5518315!4d111.6517124!16s%2Fg%2F11hcfdhnmj?entry=ttu&g_ep=EgoyMDI2MTExNy4wIKXMDSoASAFQAw%3D%3D',
+  mapUrl: 'https://www.google.com/maps/search/?api=1&query=-7.5518315%2C111.6517124',
   mapEmbedUrl: 'https://www.google.com/maps?q=-7.5518315,111.6517124&z=17&output=embed',
   whatsapp: '6281234567890',
   whatsappDisplay: '0812-3456-7890',
@@ -14,14 +14,23 @@ export const DEFAULT_SETTINGS = {
   license: '503/108/KPTS/DISPERHUB/2024',
   bankName: 'Bank BCA',
   bankAccount: '1234-5678-90',
-  bankHolder: 'PO Bugar Indah Sejahtera',
+  bankHolder: 'PO Bugar Indah',
 };
 
 export function getCompanySettings() {
   try {
     const saved = localStorage.getItem('trevel_company_settings');
     if (saved) {
-      return { ...DEFAULT_SETTINGS, ...JSON.parse(saved) };
+      const settings = { ...DEFAULT_SETTINGS, ...JSON.parse(saved) };
+      for (const key of ['name', 'bankHolder']) {
+        if (typeof settings[key] === 'string') {
+          settings[key] = settings[key].replace(/\s*\bSejahtera\b\s*/gi, ' ').replace(/\s{2,}/g, ' ').trim();
+        }
+      }
+      if (typeof settings.mapUrl === 'string' && /sejahtera/i.test(settings.mapUrl)) {
+        settings.mapUrl = DEFAULT_SETTINGS.mapUrl;
+      }
+      return settings;
     }
   } catch (e) {
     // ignore
